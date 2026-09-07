@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meu App - Download</title>
+  <title>Meus Apps</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -41,8 +41,6 @@
       background: var(--bg);
       color: var(--text);
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
       transition: background 0.3s, color 0.3s;
     }
 
@@ -51,14 +49,13 @@
       justify-content: space-between;
       align-items: center;
       padding: 20px 24px;
-      max-width: 900px;
+      max-width: 1100px;
       margin: 0 auto;
-      width: 100%;
     }
 
     .logo {
       font-weight: 700;
-      font-size: 1.25rem;
+      font-size: 1.3rem;
       letter-spacing: -0.5px;
     }
 
@@ -81,44 +78,117 @@
     }
 
     main {
-      flex: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px 24px 60px;
+    }
+
+    /* ===== LISTA DE APPS ===== */
+    #apps-list h2 {
+      font-size: 1.6rem;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: var(--text-secondary);
+      margin-bottom: 32px;
+    }
+
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .app-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px 24px;
+      cursor: pointer;
+      transition: all 0.25s;
+      box-shadow: var(--shadow);
+    }
+
+    .app-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.15);
+    }
+
+    .app-icon {
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      border-radius: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 20px;
+      font-size: 1.8rem;
+      color: white;
+      margin-bottom: 18px;
     }
 
-    .card {
+    .app-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 6px;
+    }
+
+    .app-card p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    /* ===== PÁGINA DO APP ===== */
+    #app-detail {
+      display: none;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .back-btn {
+      background: none;
+      border: none;
+      color: var(--primary);
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .back-btn:hover {
+      text-decoration: underline;
+    }
+
+    .detail-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 24px;
       padding: 40px 32px;
-      max-width: 420px;
-      width: 100%;
       text-align: center;
       box-shadow: var(--shadow);
-      transition: all 0.3s;
     }
 
-    .app-icon {
-      width: 96px;
-      height: 96px;
+    .detail-icon {
+      width: 100px;
+      height: 100px;
       background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-      border-radius: 22px;
+      border-radius: 24px;
       margin: 0 auto 24px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2.5rem;
+      font-size: 2.8rem;
       color: white;
       box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
     }
 
-    h1 {
-      font-size: 1.75rem;
-      font-weight: 700;
+    .detail-card h1 {
+      font-size: 1.8rem;
       margin-bottom: 8px;
-      letter-spacing: -0.5px;
     }
 
     .version {
@@ -127,14 +197,13 @@
       color: var(--text-secondary);
       font-size: 0.85rem;
       font-weight: 500;
-      padding: 4px 12px;
+      padding: 4px 14px;
       border-radius: 20px;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
     }
 
     .description {
       color: var(--text-secondary);
-      font-size: 1rem;
       line-height: 1.6;
       margin-bottom: 32px;
     }
@@ -148,7 +217,7 @@
       text-decoration: none;
       font-weight: 600;
       font-size: 1.05rem;
-      padding: 16px 32px;
+      padding: 16px 36px;
       border-radius: 14px;
       transition: all 0.2s;
       box-shadow: 0 4px 14px rgba(59, 130, 246, 0.35);
@@ -157,34 +226,19 @@
     .download-btn:hover {
       background: var(--primary-hover);
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(59, 130, 246, 0.45);
-    }
-
-    .download-btn:active {
-      transform: translateY(0);
     }
 
     .info {
-      margin-top: 24px;
+      margin-top: 22px;
       font-size: 0.85rem;
       color: var(--text-secondary);
     }
 
     footer {
       text-align: center;
-      padding: 24px;
+      padding: 30px;
       font-size: 0.85rem;
       color: var(--text-secondary);
-    }
-
-    @media (max-width: 480px) {
-      .card {
-        padding: 32px 24px;
-      }
-      
-      h1 {
-        font-size: 1.5rem;
-      }
     }
   </style>
 </head>
@@ -197,26 +251,33 @@
   </header>
 
   <main>
-    <div class="card">
-      <div class="app-icon">📱</div>
-      
-      <h1>Nome do Seu App</h1>
-      <div class="version">v1.0.0</div>
-      
-      <p class="description">
-        Descrição curta e atrativa do seu aplicativo. Explique o que ele faz de forma clara e objetiva.
-      </p>
-      
-      <!-- TROQUE O LINK ABAIXO PELO LINK DO SEU APK NO GITHUB RELEASES -->
-      <a href="https://github.com/emisuuu/meus-apps/releases/download/v1.0.0/Graficos.PES.14.apk" class="download-btn" download>
-        <span>⬇️</span>
-        Baixar APK
-      </a>
-      
-      <div class="info">
-        Android 8.0+ • Tamanho aproximado: XX MB
+    <!-- LISTA DE APPS -->
+    <section id="apps-list">
+      <h2>Meus Aplicativos</h2>
+      <p class="subtitle">Clique em um app para baixar</p>
+
+      <div class="apps-grid" id="apps-grid">
+        <!-- Os cards serão gerados pelo JavaScript -->
       </div>
-    </div>
+    </section>
+
+    <!-- PÁGINA DE DETALHE DO APP -->
+    <section id="app-detail">
+      <button class="back-btn" onclick="showList()">← Voltar para a lista</button>
+
+      <div class="detail-card">
+        <div class="detail-icon" id="detail-icon">📱</div>
+        <h1 id="detail-name">Nome do App</h1>
+        <div class="version" id="detail-version">v1.0.0</div>
+        <p class="description" id="detail-description">Descrição do app</p>
+        
+        <a href="#" class="download-btn" id="detail-download" download>
+          <span>⬇️</span> Baixar APK
+        </a>
+        
+        <div class="info" id="detail-info">Android 8.0+ • 00 MB</div>
+      </div>
+    </section>
   </main>
 
   <footer>
@@ -224,6 +285,79 @@
   </footer>
 
   <script>
+    // ====================== DADOS DOS APPS ======================
+    // Aqui você edita os 3 apps
+    const apps = [
+      {
+        id: 1,
+        name: "App 1",
+        version: "v1.0.0",
+        description: "Descrição curta e clara do primeiro aplicativo. Explique o que ele faz.",
+        icon: "📱",
+        downloadUrl: "COLE_AQUI_O_LINK_DO_APK_1",
+        size: "25 MB",
+        android: "Android 8.0+"
+      },
+      {
+        id: 2,
+        name: "App 2",
+        version: "v1.2.0",
+        description: "Descrição do segundo aplicativo. Pode falar das principais funções.",
+        icon: "🎮",
+        downloadUrl: "COLE_AQUI_O_LINK_DO_APK_2",
+        size: "40 MB",
+        android: "Android 9.0+"
+      },
+      {
+        id: 3,
+        name: "App 3",
+        version: "v2.0.0",
+        description: "Descrição do terceiro aplicativo. Deixe atraente para o usuário baixar.",
+        icon: "🛠️",
+        downloadUrl: "COLE_AQUI_O_LINK_DO_APK_3",
+        size: "18 MB",
+        android: "Android 8.0+"
+      }
+    ];
+
+    // ====================== FUNÇÕES ======================
+    function renderApps() {
+      const grid = document.getElementById('apps-grid');
+      grid.innerHTML = '';
+
+      apps.forEach(app => {
+        const card = document.createElement('div');
+        card.className = 'app-card';
+        card.onclick = () => showApp(app.id);
+        card.innerHTML = `
+          <div class="app-icon">${app.icon}</div>
+          <h3>${app.name}</h3>
+          <p>${app.description.substring(0, 80)}...</p>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function showApp(id) {
+      const app = apps.find(a => a.id === id);
+      if (!app) return;
+
+      document.getElementById('detail-icon').textContent = app.icon;
+      document.getElementById('detail-name').textContent = app.name;
+      document.getElementById('detail-version').textContent = app.version;
+      document.getElementById('detail-description').textContent = app.description;
+      document.getElementById('detail-download').href = app.downloadUrl;
+      document.getElementById('detail-info').textContent = `${app.android} • ${app.size}`;
+
+      document.getElementById('apps-list').style.display = 'none';
+      document.getElementById('app-detail').style.display = 'block';
+    }
+
+    function showList() {
+      document.getElementById('app-detail').style.display = 'none';
+      document.getElementById('apps-list').style.display = 'block';
+    }
+
     function toggleTheme() {
       const html = document.documentElement;
       const icon = document.getElementById('theme-icon');
@@ -239,12 +373,15 @@
       }
     }
 
-    // Carrega o tema salvo
+    // Carrega tema salvo
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
       document.documentElement.setAttribute('data-theme', 'dark');
       document.getElementById('theme-icon').textContent = '☀️';
     }
+
+    // Inicia a página
+    renderApps();
   </script>
 </body>
 </html>
